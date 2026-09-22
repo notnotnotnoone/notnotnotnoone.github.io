@@ -93,7 +93,7 @@ nav { position: sticky; top: 0; z-index: 50; background: rgba(247,247,244,0.85);
 .engine-bar { background: var(--accent-bg); border: 0.5px solid rgba(16,147,90,0.35); border-radius: 14px; padding: 1.3rem 1.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .engine-bar .eb-name { font-family: var(--font-mono); font-size: 17px; font-weight: 600; color: var(--accent-ink); }
 .engine-bar .eb-desc { font-family: var(--font-mono); font-size: 12px; color: var(--accent-ink); opacity: 0.8; }
-.spokes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.spokes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 40px; }
 @media (max-width: 680px) { .spokes { grid-template-columns: 1fr; } .spoke::before { display: none; } }
 .spoke { position: relative; background: var(--surface); border: 0.5px solid var(--line); border-radius: 14px; padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
 .spoke::before { content: ""; position: absolute; top: -40px; left: 50%; width: 1px; height: 40px; background: repeating-linear-gradient(180deg, rgba(16,147,90,0.5) 0 5px, transparent 5px 10px); }

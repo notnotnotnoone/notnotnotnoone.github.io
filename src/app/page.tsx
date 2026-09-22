@@ -2,28 +2,25 @@ import Link from "next/link";
 import Nav from "./Nav";
 import Demo from "./Demo";
 
-const heroCode = `<span class="prompt">$</span> pip install flexrouter
+const heroCode = `<span class="prompt">$</span> flexrouter dashboard
+<span class="out">#  → http://localhost:4891</span>
 
-<span class="c-kw">from</span> flexrouter <span class="c-kw">import</span> FlexRouter
-
-router = <span class="c-fn">FlexRouter</span>()              <span class="c-com"># reads flexrouter.yaml</span>
-reply  = router.<span class="c-fn">generate</span>(
-    messages,
-    tier=<span class="c-str">"balanced"</span>,          <span class="c-com"># ask for quality, not a model</span>
-)
+<span class="prompt">$</span> curl localhost:4891/v1/chat/completions \\
+    -d <span class="c-str">'{"model": "balanced", "messages": [...]}'</span>
 <span class="out">#  routed to cerebras/qwen-235b · $0.00</span>
+
+<span class="c-com"># any OpenAI-compatible app or SDK works too — no flexrouter code needed</span>
 
 <span class="prompt">$</span> <span class="cursor">▌</span>`;
 
 const stats = [
   { n: "6", g: false, l: "providers, one API" },
-  { n: "99.97%", g: true, l: "uptime across 30 days" },
-  { n: "0", g: false, l: "requests ever dropped" },
+  { n: "MIT", g: true, l: "open source, self-hosted" },
+  { n: "1", g: false, l: "shared address, every app" },
   { n: "$0", g: true, l: "spend on free tiers" },
 ];
 
 const spokes = [
-  { consumes: "consumes flexrouter", name: "openvl", desc: "The flagship agent framework — multi-hop tool-calling agents with vision. flexrouter is its engine." },
   { consumes: "consumes flexrouter", name: "stash", desc: "Personal AI inventory for storage boxes — 3D map, multi-turn chat, one-liner setup. Launched." },
   { consumes: "same pattern, in TS", name: "agora", desc: "A live demo that re-implements flexrouter's routing in TypeScript to survive free-tier limits in the browser." },
 ];
@@ -52,7 +49,7 @@ export default function Home() {
             <div className="code-card">
               <div className="code-top">
                 <span className="d" /><span className="d" /><span className="d" />
-                <span className="fn">your_app.py</span>
+                <span className="fn">terminal</span>
               </div>
               <pre className="code" dangerouslySetInnerHTML={{ __html: heroCode }} />
             </div>
@@ -75,9 +72,10 @@ export default function Home() {
             <div className="eyebrow"><span className="dot" />the flagship</div>
             <h2>flexrouter — the router that never runs out</h2>
             <p className="sec-lead">
-              A universal Python routing library for LLMs. Point it at every free tier you can get, group models into
-              scored tiers, and it keeps your app answering — juggling per-minute and per-day quotas, rotating keys, and
-              routing around anything rate-limited.
+              A background server that speaks OpenAI&apos;s API. Point it at every free tier you can get, group models
+              into scored buckets, and it keeps your app answering — juggling per-minute and per-day quotas, rotating
+              keys, and routing around anything rate-limited. A thin Python client is there too, for code that wants to
+              skip the network hop.
             </p>
           </div>
           <div className="flag">
@@ -97,24 +95,24 @@ export default function Home() {
             <h2>Running in three lines</h2>
             <p className="sec-lead">
               No model names in your app code, no retry loops, no rate-limit handling. Install, point it at your free
-              tiers, call one method.
+              tiers, start it.
             </p>
           </div>
           <div className="pnp-grid">
             <div className="pnp">
               <span className="pnp-num">01</span><span className="pnp-t">Install</span>
-              <div className="pnp-code">pip install flexrouter</div>
+              <div className="pnp-code">pip install git+…/flexrouter</div>
             </div>
             <div className="pnp">
               <span className="pnp-num">02</span><span className="pnp-t">Configure</span>
-              <div className="pnp-code">edit flexrouter.yaml</div>
+              <div className="pnp-code">edit config.yaml</div>
             </div>
             <div className="pnp">
-              <span className="pnp-num">03</span><span className="pnp-t">Generate</span>
+              <span className="pnp-num">03</span><span className="pnp-t">Serve</span>
               <div
                 className="pnp-code"
                 dangerouslySetInnerHTML={{
-                  __html: 'router.<span class="c-kw">generate</span>(msgs, tier=<span class="c-str">"balanced"</span>)',
+                  __html: '<span class="c-fn">flexrouter</span> dashboard',
                 }}
               />
             </div>
@@ -130,13 +128,13 @@ export default function Home() {
             <div className="eyebrow"><span className="dot" />one engine, many products</div>
             <h2>Everything I build runs on flexrouter</h2>
             <p className="sec-lead">
-              flexrouter is the hub. My other projects are its consumers — the same resilient routing under an agent
-              framework, a full-stack app, and a live demo.
+              flexrouter is the hub. My other projects are its consumers — the same resilient routing under a
+              full-stack app and a live demo.
             </p>
           </div>
           <div className="engine-bar">
             <span className="eb-name">flexrouter</span>
-            <span className="eb-desc">the routing engine — Python · tier-based · quota-aware</span>
+            <span className="eb-desc">the routing engine — OpenAI-compatible server · bucket-based · quota-aware</span>
           </div>
           <div className="spokes">
             {spokes.map((s) => (
@@ -201,24 +199,6 @@ export default function Home() {
           <div className="proj-grid">
             <div className="proj">
               <div className="proj-head">
-                <span className="proj-name">openvl</span>
-                <span className="proj-status flagship">flagship</span>
-              </div>
-              <p className="proj-desc">
-                An agent framework for multi-hop, tool-calling AI agents with vision support. Runs its whole model layer
-                through flexrouter, so agents keep working no matter which provider is up.
-              </p>
-              <div className="proj-tags">
-                <span className="ptag">python</span><span className="ptag">agents</span>
-                <span className="ptag">vision</span><span className="ptag on-fr">↑ flexrouter</span>
-              </div>
-              <div className="proj-links">
-                <a href="https://github.com/notnotnotnoone">github ↗</a>
-                <a href="https://github.com/notnotnotnoone">docs ↗</a>
-              </div>
-            </div>
-            <div className="proj">
-              <div className="proj-head">
                 <span className="proj-name">stash</span>
                 <span className="proj-status flagship">launched</span>
               </div>
@@ -248,12 +228,10 @@ export default function Home() {
             </p>
           </div>
           <div className="foot-repos">
-            <a href="https://github.com/notnotnotnoone">flexrouter — the engine</a>
-            <a href="https://github.com/notnotnotnoone">openvl — agent framework</a>
+            <a href="https://github.com/notnotnotnoone/flexrouter">flexrouter — the engine</a>
             <a href="https://github.com/notnotnotnoone/stash">stash — AI inventory</a>
             <a href="https://github.com/notnotnotnoone/agora">agora — live demo</a>
             <a href="https://github.com/notnotnotnoone/funaithings" className="archived">funaithings — archived</a>
-            <a href="https://github.com/notnotnotnoone/colosseum" className="archived">colosseum · atlas — the lab</a>
           </div>
         </div>
       </footer>

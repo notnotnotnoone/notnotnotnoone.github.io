@@ -22,7 +22,7 @@ type Provider = { id: string; keys: number; lat: number; key: number; models: Mo
 
 const CAPS = [
   { k: "parsing", t: "Pluggable header parsers", d: "per-provider: openai · cerebras · openrouter · google" },
-  { k: "config", t: "Hot config reload", d: "edit flexrouter.yaml — applies with no restart" },
+  { k: "config", t: "Hot config reload", d: "edit config.yaml — applies with no restart" },
   { k: "sessions", t: "Session stickiness", d: "a conversation pins to one model for its TTL" },
   { k: "streaming", t: "Structured stream events", d: "content · reasoning · tool calls · usage" },
   { k: "budget", t: "Provider budget caps", d: "stop routing to a provider past $X / day" },
@@ -61,7 +61,7 @@ export default function Demo() {
 
     const tiers = ["fast", "balanced", "frontier", "vision"];
     let activeTier = "balanced";
-    let total = 184207;
+    let total = 0;
     let selId: string | null = null;
 
     providers.forEach((p) => {
@@ -432,7 +432,7 @@ export default function Demo() {
         <div className="grid" id="grid" />
         <div className="footbar">
           <span>
-            requests routed <b id="cnt">184,207</b> · <b>0</b> dropped · uptime <b>99.97%</b>
+            requests routed this session <b id="cnt">0</b> · live simulation, not production traffic
           </span>
           <span className="auto-toggle on" id="auto"><span className="sw" /><span>auto-demo</span></span>
         </div>

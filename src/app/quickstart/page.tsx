@@ -5,24 +5,29 @@ import Nav from "../Nav";
 export const metadata: Metadata = {
   title: "flexrouter quickstart — unlimited compute in 3 lines",
   description:
-    "Install flexrouter, point it at your free tiers, and call one method. Plug and play.",
+    "Install flexrouter, point it at your free tiers, and start it. Plug and play.",
 };
 
-const configCode = `<span class="c-com"># group models into scored tiers — flexrouter picks the best available</span>
-tiers:
+const configCode = `<span class="c-com"># group models into scored buckets — flexrouter picks the best available</span>
+buckets:
   balanced:
     - {provider: cerebras, model: qwen-3-235b, score: 90, rpm: 30, tpm: 60000}
     - {provider: groq, model: llama-3.3-70b, score: 84, rpm: 30, tpm: 30000}
     - {provider: google, model: gemini-2.0-flash, score: 82, rpm: 15, quotas: {rpd: 1500}}
 
 providers:
-  cerebras: {base_url: https://api.cerebras.ai/v1, api_keys: [{env: CEREBRAS_API_KEY}]}
-  groq:     {base_url: https://api.groq.com/openai/v1, api_keys: [{env: GROQ_API_KEY}]}
-  google:   {base_url: https://generativelanguage.googleapis.com/v1beta/openai, header_parser: google, api_keys: [{env: GOOGLE_API_KEY}]}`;
+  cerebras: {base_url: https://api.cerebras.ai/v1}
+  groq:     {base_url: https://api.groq.com/openai/v1}
+  google:   {base_url: https://generativelanguage.googleapis.com/v1beta/openai/}`;
+
+const serveCode = `<span class="prompt">$</span> flexrouter keys add cerebras
+<span class="prompt">$</span> flexrouter keys add groq
+<span class="prompt">$</span> flexrouter dashboard
+<span class="out">#  → http://localhost:4891</span>`;
 
 const generateCode = `<span class="c-kw">from</span> flexrouter <span class="c-kw">import</span> FlexRouter
 
-router = <span class="c-fn">FlexRouter</span>()                          <span class="c-com"># reads flexrouter.yaml</span>
+router = <span class="c-fn">FlexRouter</span>()                          <span class="c-com"># reads the same shared config, in-process</span>
 reply  = router.<span class="c-fn">generate</span>(
     [{<span class="c-str">"role"</span>: <span class="c-str">"user"</span>, <span class="c-str">"content"</span>: <span class="c-str">"explain rate limits"</span>}],
     tier=<span class="c-str">"balanced"</span>,                      <span class="c-com"># ask for a quality tier, not a model</span>
@@ -60,9 +65,10 @@ export default function Quickstart() {
           </h1>
           <p className="sub">
             flexrouter is plug and play. Install it, point it at every free tier
-            you have, and call one method — it handles the routing, the rate
-            limits, the daily caps, and the key rotation so you never think
-            about them again.
+            you have, and start it — it speaks OpenAI&apos;s API, so anything that
+            already talks to OpenAI can point at flexrouter instead, with no
+            special code. It handles the routing, the rate limits, the daily
+            caps, and the key rotation so you never think about them again.
           </p>
         </header>
 
@@ -76,7 +82,7 @@ export default function Quickstart() {
               </span>
             </div>
             <div className="code">
-              <span className="prompt">$</span> pip install flexrouter
+              <span className="prompt">$</span> pip install git+https://github.com/notnotnotnoone/flexrouter
             </div>
           </div>
 
@@ -85,7 +91,7 @@ export default function Quickstart() {
               <span className="step-num">2</span>
               <span className="step-title">
                 Point it at your free tiers
-                <span className="t2">flexrouter.yaml</span>
+                <span className="t2">config.yaml — one shared file per machine</span>
               </span>
             </div>
             <pre
@@ -104,17 +110,21 @@ export default function Quickstart() {
             <div className="step-head">
               <span className="step-num">3</span>
               <span className="step-title">
-                Generate<span className="t2">it just works</span>
+                Save your keys, start it
+                <span className="t2">it just works</span>
               </span>
             </div>
             <pre
               className="code"
-              dangerouslySetInnerHTML={{ __html: generateCode }}
+              dangerouslySetInnerHTML={{ __html: serveCode }}
             />
             <div className="step-note">
               No model names in your app code. No retry loops. No rate-limit
-              handling. If a provider is capped, flexrouter has already moved on
-              to the next one with headroom — <b>your call still returns.</b>
+              handling. Point any OpenAI-compatible app or SDK at{" "}
+              <b>http://localhost:4891/v1</b> and use a bucket name (like{" "}
+              <b>balanced</b>) wherever it asks for a model — flexrouter has
+              already moved on to the next provider with headroom if one&apos;s
+              capped.
             </div>
           </div>
 
@@ -122,8 +132,18 @@ export default function Quickstart() {
             <div className="step-head">
               <span className="step-num">+</span>
               <span className="step-title">
-                Streaming, too<span className="t2">structured events</span>
+                Writing Python?<span className="t2">skip the network hop</span>
               </span>
+            </div>
+            <pre
+              className="code"
+              dangerouslySetInnerHTML={{ __html: generateCode }}
+            />
+            <div className="step-note">
+              You don&apos;t need this if you&apos;re already sending requests to
+              the address above — it&apos;s only for Python code that wants to
+              call flexrouter in-process instead. Streaming works the same way,
+              with structured events instead of a single reply:
             </div>
             <pre
               className="code"
@@ -159,7 +179,7 @@ export default function Quickstart() {
           <div className="cta-row">
             <a
               className="btn primary"
-              href="https://github.com/notnotnotnoone"
+              href="https://github.com/notnotnotnoone/flexrouter"
             >
               Get flexrouter on GitHub →
             </a>
