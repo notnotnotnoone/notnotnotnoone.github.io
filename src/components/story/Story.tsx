@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
@@ -93,7 +94,7 @@ export function Story() {
       id="story"
       aria-label="flexrouter, step by step"
       className="story"
-      style={{ height: `${(STEPS.length + 1) * 100}vh` }}
+      style={{ height: `${(STEPS.length + 1.5) * 100}vh` }}
     >
       <div className="story-pin">
         <ContainerScroll targetRef={ref} titleComponent={title}>

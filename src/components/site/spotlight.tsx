@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
+import {  } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 /** A soft green light that follows the pointer and lights up the dot grid under it. */
 export function Spotlight() {

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { animate, useReducedMotion } from "framer-motion";
+import { animate } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const fmt = (n: number) => Math.round(n).toLocaleString("en-US");
 

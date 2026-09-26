@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ArrowRight, ArrowUpRight, Copy } from "lucide-react";
 import { Box } from "@/components/ui/box";
 import { Button, ButtonLink } from "@/components/ui/button";

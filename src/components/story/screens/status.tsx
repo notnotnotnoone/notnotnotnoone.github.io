@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { RefreshCw, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Meter } from "@/components/ui/meter";

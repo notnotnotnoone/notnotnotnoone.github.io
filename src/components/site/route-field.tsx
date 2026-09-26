@@ -1,6 +1,7 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
+import {  } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const NODE = { x: 760, y: 260 };
 const LANES = [

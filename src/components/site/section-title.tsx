@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useIsClient } from "@/lib/use-media";
 
 /** "// Title" that types itself in once, then leaves a blinking block caret. The real text stays in the DOM. */

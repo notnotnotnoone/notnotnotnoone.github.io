@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { Box } from "@/components/ui/box";
 import { Meter } from "@/components/ui/meter";
 import { Reveal } from "./reveal";

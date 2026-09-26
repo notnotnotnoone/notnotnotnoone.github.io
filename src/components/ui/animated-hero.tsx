@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, type MotionProps } from "framer-motion";
+import { motion, type MotionProps } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ArrowRight, ArrowUpRight, Copy } from "lucide-react";
 import { RouteField } from "@/components/site/route-field";
 import { copyText } from "@/lib/copy";

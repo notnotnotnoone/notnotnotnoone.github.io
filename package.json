@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "check:dashes": "node scripts/check-dashes.mjs src"
+    "check:dashes": "node scripts/check-dashes.mjs src",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -33,6 +34,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "jsdom": "^29.1.1",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite": "^8.3.1",

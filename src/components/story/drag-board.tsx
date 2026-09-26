@@ -1,7 +1,8 @@
 "use client";
 
 import { useReducer, useRef } from "react";
-import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { GripVertical } from "lucide-react";
 import { dragReducer } from "./drag";
 import { useChoreo } from "./use-choreo";

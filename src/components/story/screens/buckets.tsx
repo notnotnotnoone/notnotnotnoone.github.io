@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ListOrdered, Sparkles } from "lucide-react";
 import { Box } from "@/components/ui/box";
 import { Button } from "@/components/ui/button";

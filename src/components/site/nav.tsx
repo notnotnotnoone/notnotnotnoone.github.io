@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { GITHUB } from "@/lib/links";
 import { Logo } from "./logo";
 
