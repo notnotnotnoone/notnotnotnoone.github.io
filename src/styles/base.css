@@ -9,6 +9,7 @@
     background-color: var(--color-ground);
     background-image: radial-gradient(var(--color-dot) 1px, transparent 1px);
     background-size: 24px 24px;
+    background-attachment: fixed;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 15px;
