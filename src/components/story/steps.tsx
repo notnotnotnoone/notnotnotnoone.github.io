@@ -1,5 +1,8 @@
 import type { ComponentType } from "react";
 import type { PageId } from "./pages";
+import { BucketsScreen } from "./screens/buckets";
+import { WelcomeScreen } from "./screens/get-started-card";
+import { ProvidersScreen } from "./screens/providers";
 
 export type ScreenProps = { trigger: number };
 export type StepDef = { narration: string; page: PageId; Screen: ComponentType<ScreenProps> };
@@ -12,9 +15,9 @@ function placeholder(name: string): ComponentType<ScreenProps> {
 }
 
 export const STEPS: StepDef[] = [
-  { narration: "flexrouter, open for the first time.", page: "overview", Screen: placeholder("Welcome") },
-  { narration: "Pick a free provider and paste a key.", page: "providers", Screen: placeholder("Providers") },
-  { narration: "Let AI find the models and rank them.", page: "buckets", Screen: placeholder("Buckets") },
+  { narration: "flexrouter, open for the first time.", page: "overview", Screen: WelcomeScreen },
+  { narration: "Pick a free provider and paste a key.", page: "providers", Screen: ProvidersScreen },
+  { narration: "Let AI find the models and rank them.", page: "buckets", Screen: BucketsScreen },
   { narration: "Check that every model answers.", page: "overview", Screen: placeholder("Test all") },
   {
     narration: "Send traffic. When a model runs out, the next one answers.",
