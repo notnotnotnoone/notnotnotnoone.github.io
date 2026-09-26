@@ -396,3 +396,100 @@
     font-size: 15px;
   }
 }
+
+@layer components {
+  .start-list {
+    position: relative;
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0 0 0 4px;
+    display: grid;
+    gap: 22px;
+  }
+  .start-line {
+    position: absolute;
+    left: 17px;
+    top: 14px;
+    bottom: 14px;
+    width: 1px;
+    background: linear-gradient(var(--color-green), var(--color-blue), var(--color-violet));
+    transform-origin: top;
+  }
+  .start-step > .reveal {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .start-num {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex: none;
+    background: var(--color-ground);
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+    font-size: 12px;
+    box-shadow: 0 0 16px -4px rgba(52, 211, 153, 0.6);
+  }
+  .start-title {
+    margin: 2px 0 4px;
+    font: 600 15px var(--font-mono);
+  }
+  .start-body {
+    margin: 0;
+    color: var(--color-ink-2);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+  .start-body code {
+    color: var(--color-ink);
+    font-size: 13px;
+  }
+
+  .cta-band {
+    overflow: hidden;
+    background:
+      radial-gradient(600px 240px at 50% 120%, rgba(52, 211, 153, 0.16), transparent 70%),
+      var(--color-panel);
+  }
+  .cta-band .box-body {
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+    padding: clamp(40px, 7vw, 80px) 16px;
+    text-align: center;
+  }
+  .cta-title {
+    margin: 0;
+    font: 600 clamp(26px, 5vw, 48px) / 1.1 var(--font-mono);
+    letter-spacing: -0.03em;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .built-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .built-card .box-body {
+    display: grid;
+    gap: 10px;
+  }
+  .built-card p {
+    margin: 0;
+    color: var(--color-ink-2);
+    font-size: 14px;
+  }
+  .built-name {
+    font-size: 17px;
+    font-weight: 600;
+  }
+}
