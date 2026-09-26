@@ -15,13 +15,19 @@ export function Footer() {
             <Link href="/quickstart">Quickstart</Link>
           </li>
           <li>
-            <a href={GITHUB}>flexrouter on GitHub</a>
+            <a href={GITHUB} target="_blank" rel="noreferrer">
+              flexrouter on GitHub
+            </a>
           </li>
           <li>
-            <a href={STASH}>stash</a>
+            <a href={STASH} target="_blank" rel="noreferrer">
+              stash
+            </a>
           </li>
           <li>
-            <a href={AGORA}>agora</a>
+            <a href={AGORA} target="_blank" rel="noreferrer">
+              agora
+            </a>
           </li>
         </ul>
       </div>
