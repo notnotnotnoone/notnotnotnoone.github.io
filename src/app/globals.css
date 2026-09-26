@@ -3,6 +3,7 @@
 @import "../styles/buttons.css";
 @import "../styles/primitives.css";
 @import "../styles/site.css";
+@import "../styles/story.css";
 
 @theme {
   --color-ground: #000000;
