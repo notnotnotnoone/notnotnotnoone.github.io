@@ -665,3 +665,115 @@
     box-shadow: 0 0 32px -4px rgba(52, 211, 153, 0.7);
   }
 }
+
+@layer components {
+  .tweak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .drag-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .drag-zone {
+    border: 1px dashed var(--color-rule-2);
+    padding: 8px;
+    min-height: 92px;
+    transition:
+      border-color 160ms var(--ease-soft),
+      background-color 160ms var(--ease-soft);
+  }
+  .drag-zone[data-armed] {
+    border-color: var(--color-green);
+    background: var(--color-green-wash);
+  }
+  .drag-zone-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2px 2px 8px;
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+  }
+  .drag-zone-head:disabled {
+    cursor: default;
+  }
+  .drag-hint {
+    font: 500 10px var(--font-mono);
+    color: var(--color-green);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  .drag-zone ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .drag-card {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 7px 8px;
+    background: var(--color-raise);
+    border: 1px solid var(--color-rule-2);
+    color: var(--color-ink);
+    font: 500 12px var(--font-mono);
+    text-align: left;
+    cursor: grab;
+    touch-action: none;
+  }
+  .drag-card[data-picked] {
+    border-color: var(--color-green);
+    box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.35);
+  }
+
+  .allow-big {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 14px;
+    color: var(--color-ink-2);
+    font-size: 13px;
+  }
+  .allow-n {
+    font: 600 clamp(34px, 5vw, 48px) / 1 var(--font-mono);
+    color: var(--color-green);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 36px rgba(52, 211, 153, 0.35);
+  }
+  .lim-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 12px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .lim-row:last-child {
+    border-bottom: 0;
+  }
+  .lim-name {
+    display: grid;
+    gap: 2px;
+    font-size: 12.5px;
+  }
+  .lim-meter,
+  .lim-row > :last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
