@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { KeyRound, Zap } from "lucide-react";
 import { Box } from "@/components/ui/box";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,7 @@ const PRESETS = [
 ];
 
 export function ProvidersScreen({ trigger }: ScreenProps) {
+  const reduce = useReducedMotion();
   const [picked, setPicked] = useState(false);
   const [key, setKey] = useState("");
   const [test, setTest] = useState(0);
@@ -84,7 +85,11 @@ export function ProvidersScreen({ trigger }: ScreenProps) {
               </div>
               <AnimatePresence>
                 {keys > 1 && (
-                  <motion.div className="row" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}>
+                  <motion.div
+                    className="row"
+                    initial={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                    animate={reduce ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+                  >
                     <span className="mono">key 2 · gsk_••••91c0</span>
                     <Pill status="ready" />
                   </motion.div>
