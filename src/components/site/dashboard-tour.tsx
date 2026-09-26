@@ -61,7 +61,7 @@ export function DashboardTour() {
         </div>
         <Box flush className="tour-frame">
           <div id="tour-panel" role="tabpanel" aria-labelledby={`tour-tab-${cur}`}>
-            <AnimatePresence initial={false}>
+            <AnimatePresence mode="wait" initial={false}>
               <motion.figure
                 key={cur}
                 className="tour-fig"
