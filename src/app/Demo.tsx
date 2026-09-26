@@ -295,7 +295,7 @@ export default function Demo() {
       { name: "google/gemini-flash", used: 780, cap: 1500 },
     ];
     const penEl = $("penalties"); const rpdEl = $("rpds"); const logEl = $("log");
-    let logLines: string[] = [];
+    const logLines: string[] = [];
 
     function renderPB() {
       if (!penEl) return;
