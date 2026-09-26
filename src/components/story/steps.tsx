@@ -3,6 +3,8 @@ import type { PageId } from "./pages";
 import { BucketsScreen } from "./screens/buckets";
 import { WelcomeScreen } from "./screens/get-started-card";
 import { ProvidersScreen } from "./screens/providers";
+import { RequestScreen } from "./screens/request";
+import { StatusScreen } from "./screens/status";
 import { TestAllScreen } from "./screens/test-all";
 import { TrafficScreen } from "./screens/traffic";
 
@@ -26,11 +28,11 @@ export const STEPS: StepDef[] = [
     page: "requests",
     Screen: TrafficScreen,
   },
-  { narration: "Every request shows its whole journey.", page: "requests", Screen: placeholder("Request") },
+  { narration: "Every request shows its whole journey.", page: "requests", Screen: RequestScreen },
   {
     narration: "When something breaks, it says why and offers the fix.",
     page: "status",
-    Screen: placeholder("Status"),
+    Screen: StatusScreen,
   },
   { narration: "Change anything by hand.", page: "settings", Screen: placeholder("Tweak") },
   { narration: "See how much free usage is left today.", page: "allowance", Screen: placeholder("Allowance") },
