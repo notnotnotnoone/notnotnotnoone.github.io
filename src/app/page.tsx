@@ -1,3 +1,5 @@
+import { ButtonGalleryDemo } from "@/components/ui/button-gallery-demo";
+
 export default function Home() {
   return (
     <main className="wrap py-24">
@@ -11,6 +13,7 @@ export default function Home() {
         </div>
         <div className="box-body text-ink-2">The new site is being built on this branch.</div>
       </div>
+      <ButtonGalleryDemo />
     </main>
   );
 }
