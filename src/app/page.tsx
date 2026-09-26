@@ -1,4 +1,6 @@
+import { DashboardTour } from "@/components/site/dashboard-tour";
 import { Footer } from "@/components/site/footer";
+import { HowItWorks } from "@/components/site/how-it-works";
 import { Nav } from "@/components/site/nav";
 import { PlainWords } from "@/components/site/plain-words";
 import { Spotlight } from "@/components/site/spotlight";
@@ -14,6 +16,8 @@ export default function Home() {
         <Hero />
         <PlainWords />
         <Story />
+        <DashboardTour />
+        <HowItWorks />
       </main>
       <Footer />
     </>
