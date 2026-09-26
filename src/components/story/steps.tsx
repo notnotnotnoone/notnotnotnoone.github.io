@@ -3,6 +3,8 @@ import type { PageId } from "./pages";
 import { BucketsScreen } from "./screens/buckets";
 import { WelcomeScreen } from "./screens/get-started-card";
 import { ProvidersScreen } from "./screens/providers";
+import { TestAllScreen } from "./screens/test-all";
+import { TrafficScreen } from "./screens/traffic";
 
 export type ScreenProps = { trigger: number };
 export type StepDef = { narration: string; page: PageId; Screen: ComponentType<ScreenProps> };
@@ -18,11 +20,11 @@ export const STEPS: StepDef[] = [
   { narration: "flexrouter, open for the first time.", page: "overview", Screen: WelcomeScreen },
   { narration: "Pick a free provider and paste a key.", page: "providers", Screen: ProvidersScreen },
   { narration: "Let AI find the models and rank them.", page: "buckets", Screen: BucketsScreen },
-  { narration: "Check that every model answers.", page: "overview", Screen: placeholder("Test all") },
+  { narration: "Check that every model answers.", page: "overview", Screen: TestAllScreen },
   {
     narration: "Send traffic. When a model runs out, the next one answers.",
     page: "requests",
-    Screen: placeholder("Traffic"),
+    Screen: TrafficScreen,
   },
   { narration: "Every request shows its whole journey.", page: "requests", Screen: placeholder("Request") },
   {
