@@ -25,7 +25,12 @@ export function TweakScreen({ trigger }: ScreenProps) {
   const [removed, setRemoved] = useState(false);
   const [cue, setCue] = useState<Cues>({ drag: 0, toggle: 0, save: 0, remove: 0 });
   const bump = (k: keyof Cues) => setCue((s) => ({ ...s, [k]: s[k] + 1 }));
-  const restore = useCallback(() => setRemoved(false), []);
+  const restore = useCallback(() => {
+    setRemoved(false);
+    // The row remounts fresh, and a stale non-zero trigger would fire its new
+    // Remove button's effect again (see final-findings.md item 3). Reset it.
+    setCue((s) => ({ ...s, remove: 0 }));
+  }, []);
 
   useChoreo(trigger, [
     [300, () => bump("drag")],
