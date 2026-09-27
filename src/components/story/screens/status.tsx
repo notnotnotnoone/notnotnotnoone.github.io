@@ -59,21 +59,24 @@ export function StatusScreen({ trigger }: ScreenProps) {
   return (
     <div ref={wrap} className="st">
       <div className="st-chips" aria-label="Summary">
-        {(["ready", "struggling", "needs"] as const).map((s) => (
-          <span key={s} className="st-chip" data-status={s} ref={s === "ready" ? chip : undefined}>
-            <span aria-hidden>{STATUS[s].glyph}</span>
-            <motion.span
-              key={s === "ready" ? pop : 0}
-              className="st-n"
-              initial={s === "ready" && pop > 0 && !reduce ? { scale: 1.6, color: "#6ee7b7" } : false}
-              animate={{ scale: 1, color: "currentColor" }}
-              transition={{ type: "spring", stiffness: 500, damping: 18 }}
-            >
-              {c[s]}
-            </motion.span>
-            {STATUS[s].word.toLowerCase()}
-          </span>
-        ))}
+        {(["ready", "struggling", "needs"] as const).map((s) => {
+          const popping = s === "ready" && pop > 0 && !reduce;
+          return (
+            <span key={s} className="st-chip" data-status={s} ref={s === "ready" ? chip : undefined}>
+              <span aria-hidden>{STATUS[s].glyph}</span>
+              <motion.span
+                key={s === "ready" ? pop : 0}
+                className="st-n"
+                initial={popping ? { scale: 1.6, color: "#6ee7b7" } : false}
+                animate={popping ? { scale: 1, color: "#34d399" } : { scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 18 }}
+              >
+                {c[s]}
+              </motion.span>
+              {STATUS[s].word.toLowerCase()}
+            </span>
+          );
+        })}
       </div>
 
       <AnimatePresence initial={false}>

@@ -17,7 +17,7 @@ npm run dev
 npm test            # unit and component tests (Vitest)
 npm run lint
 npm run build       # runs the no-dash check first, then the static export to out/
-npm run smoke        # browser walk-through; needs `npm run dev` running and `npx playwright install chromium` once
+npm run smoke       # browser walk-through; needs `npm run dev` running and `npx playwright install chromium` once
 ```
 
 Copy rule: no em dashes or en dashes anywhere under `src/`. The build fails if one gets in.

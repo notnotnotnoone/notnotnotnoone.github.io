@@ -326,6 +326,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .switch[data-state="working"] .switch-track i {
-    animation: pulse 700ms ease-in-out infinite !important;
+    animation: pulse 1.4s ease-in-out infinite !important;
   }
 }

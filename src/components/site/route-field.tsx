@@ -1,6 +1,5 @@
 "use client";
 
-import {  } from "framer-motion";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const NODE = { x: 760, y: 260 };
