@@ -36,6 +36,15 @@ for (const r of runs) {
       failed = true;
       console.error(`[${r.name}] ${path}: page is ${overflow}px wider than the viewport`);
     }
+
+    if (path === "/") {
+      await page.waitForTimeout(1200);
+      const opacity = await page.evaluate(() => Number(getComputedStyle(document.querySelector(".hero-title")).opacity));
+      if (opacity < 0.99) {
+        failed = true;
+        console.error(`[${r.name}] ${path}: hero title opacity is ${opacity}, expected it visible (1)`);
+      }
+    }
   }
 
   await page.goto(BASE + "/", { waitUntil: "networkidle" });

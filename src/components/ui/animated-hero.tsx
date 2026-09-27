@@ -17,14 +17,11 @@ export function Hero() {
   const i = useRotatingIndex(HERO_WORDS.length, 2000);
   const reduce = useReducedMotion();
 
-  const enter = (n: number): MotionProps =>
-    reduce
-      ? {}
-      : {
-          initial: { opacity: 0, y: 18, filter: "blur(6px)" },
-          animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-          transition: { delay: 0.15 + n * 0.12, duration: 0.8, ease: EASE },
-        };
+  const enter = (n: number): MotionProps => ({
+    initial: { opacity: 0, y: 18, filter: "blur(6px)" },
+    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+    transition: reduce ? { duration: 0.2 } : { delay: 0.15 + n * 0.12, duration: 0.8, ease: EASE },
+  });
 
   return (
     <header className="hero">
