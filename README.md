@@ -28,7 +28,6 @@ Pushing to `master` deploys to GitHub Pages via [.github/workflows/deploy.yml](.
 
 The `v2-redesign` branch describes flexrouter 2.3 and must not be merged before 2.3 is released. Before merging:
 
-- add the dashboard screenshots to `public/tour/` and set each `src` in `src/components/site/dashboard-tour.tsx`
 - check the "How it works" text and the quickstart against 2.3 as shipped
 - switch the install command to PyPI if 2.3 is published there
 - link the quickstart to the rewritten Getting Started guide

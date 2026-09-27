@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Box } from "@/components/ui/box";
-import { Fold } from "@/components/ui/fold";
 import { Meter } from "@/components/ui/meter";
 import { Pill, type Status } from "@/components/ui/pill";
 import { Tag } from "@/components/ui/tag";
@@ -31,14 +30,6 @@ export const EXPLAINERS: { title: string; text: string }[] = [
   {
     title: "Setup with AI",
     text: "Pick a provider from the list, marked free or paid, and paste a key. Add models with AI finds the models the key can use, Get rate limits with AI fills in their limits, and Rank with AI puts them in order.",
-  },
-  {
-    title: "Every request on record",
-    text: "Each request gets an ID and a record of every model it tried, how each one failed, and which one answered. The Playground sends a real request through the router so you can watch it happen.",
-  },
-  {
-    title: "Safe with your settings and money",
-    text: "flexrouter never rewrites your settings file. Changes made in the dashboard go in a separate file that you can reset. A budget cap can hold any paid provider at $0, so a fallback never bills you.",
   },
 ];
 
@@ -96,14 +87,6 @@ const VISUALS: ReactNode[] = [
     <Tag tone="free">Free tier</Tag>
     <Tag tone="paid">Paid</Tag>
   </div>,
-  <div key="r" className="hiw-vis">
-    <Fold summary="Tried first" note="1 attempt">
-      <span className="mono text-xs text-ink-2">groq/openai/gpt-oss-120b · 429 · moved on at once</span>
-    </Fold>
-  </div>,
-  <div key="m" className="hiw-vis mono text-xs">
-    <code className="text-ink-2">provider_budget: {"{ openai: 0 }"}</code>
-  </div>,
 ];
 
 export function HowItWorks() {
@@ -124,12 +107,6 @@ export function HowItWorks() {
           </Reveal>
         ))}
       </div>
-      <Reveal>
-        <p className="hiw-close">
-          It works with any app that can talk to OpenAI&apos;s API. Point it at{" "}
-          <code>http://localhost:4891/v1</code> and use a bucket name as the model. There is a Python client too.
-        </p>
-      </Reveal>
     </section>
   );
 }

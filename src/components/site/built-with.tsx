@@ -36,7 +36,6 @@ export function BuiltWith() {
                 <Tag>Being updated</Tag>
               </div>
               <p>{p.text}</p>
-              <p className="text-ink-4">Runs on an older flexrouter for now.</p>
               <ButtonLink kind="ghost" size="sm" href={p.href} external icon={ArrowUpRight} label="GitHub" />
             </Box>
           </Reveal>
