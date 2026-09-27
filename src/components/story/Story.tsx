@@ -98,7 +98,7 @@ export function Story() {
     >
       <div className="story-pin">
         <ContainerScroll targetRef={ref} titleComponent={title}>
-          <ToastProvider>
+          <ToastProvider resetKey={shown}>
             <MiniDash page={step.page} available={AVAILABLE} onPick={pos.free ? (p) => setFreeStep(stepForPage(p)) : undefined}>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
