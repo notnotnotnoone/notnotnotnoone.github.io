@@ -123,6 +123,8 @@
     width: 0.55em;
     height: 0.9em;
     margin-left: 3px;
+    /* Zero net width, so the finished title never wraps the caret onto the next line. */
+    margin-right: calc(-0.55em - 3px);
     vertical-align: -0.08em;
     background: var(--color-green);
     animation: blink 1s steps(1) infinite;
