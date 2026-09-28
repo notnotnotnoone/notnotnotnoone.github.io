@@ -26,8 +26,6 @@ Copy rule: no em dashes or en dashes anywhere under `src/`. The build fails if o
 
 Pushing to `master` deploys to GitHub Pages via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
 
-The `v2-redesign` branch describes flexrouter 2.3 and must not be merged before 2.3 is released. Before merging:
+## Dashboard screenshots
 
-- check the "How it works" text and the quickstart against 2.3 as shipped
-- switch the install command to PyPI if 2.3 is published there
-- link the quickstart to the rewritten Getting Started guide
+`public/tour/*.png` are the flexrouter 2.3.0 dashboard at 1600x1000 in dark mode, run against the router's demo data (fake keys), not anyone's real setup. The Settings shot is scrolled past the Server box because its Data folder field shows a local path. Retake them only when the dashboard changes.
