@@ -1,0 +1,177 @@
+@layer components {
+  .btn-wrap {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    max-width: 100%;
+  }
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font: 500 11px/1 var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink);
+    background: var(--color-raise);
+    border: 1px solid var(--color-rule-2);
+    border-radius: 2px;
+    padding: 8px 12px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      border-color 160ms var(--ease-soft),
+      background-color 160ms var(--ease-soft),
+      box-shadow 220ms var(--ease-soft),
+      color 160ms var(--ease-soft),
+      transform 120ms var(--ease-soft);
+  }
+  .btn-glyph {
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+  .btn-sm {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+  .btn-lg {
+    padding: 13px 20px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .btn-lg .btn-glyph {
+    width: 16px;
+    height: 16px;
+  }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn:not(:disabled):active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:not(:disabled):hover {
+      border-color: var(--color-ink-3);
+    }
+  }
+
+  /* kinds */
+  .btn-primary {
+    color: var(--color-green);
+    border-color: rgba(52, 211, 153, 0.45);
+    background: var(--color-green-wash);
+  }
+  .btn-fix {
+    color: var(--color-blue);
+    border-color: rgba(125, 211, 252, 0.4);
+    background: var(--color-blue-wash);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+  .btn-test {
+    color: var(--color-violet);
+    border-color: rgba(167, 139, 250, 0.4);
+    background: transparent;
+  }
+  .btn-copy {
+    color: var(--color-ink-2);
+    background: transparent;
+    padding: 6px 9px;
+  }
+  .btn-danger {
+    color: var(--color-bad);
+    border-color: rgba(248, 113, 113, 0.4);
+    background: transparent;
+  }
+  .btn-ghost {
+    color: var(--color-ink-2);
+    background: transparent;
+    border-color: transparent;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:not(:disabled):hover {
+      border-color: var(--color-green);
+      box-shadow:
+        0 0 0 1px rgba(52, 211, 153, 0.25),
+        0 0 28px -6px rgba(52, 211, 153, 0.55);
+    }
+    .btn-fix:not(:disabled):hover {
+      border-color: var(--color-blue);
+    }
+    .btn-test:not(:disabled):hover {
+      border-color: var(--color-violet);
+      background: var(--color-violet-wash);
+    }
+    .btn-copy:not(:disabled):hover,
+    .btn-ghost:not(:disabled):hover {
+      color: var(--color-ink);
+    }
+    .btn-ghost:not(:disabled):hover {
+      border-color: var(--color-rule-2);
+    }
+    .btn-danger:not(:disabled):hover {
+      border-color: var(--color-bad);
+      background: var(--color-bad-wash);
+    }
+  }
+
+  /* states */
+  .btn[data-state="working"] {
+    cursor: progress;
+  }
+  .btn[data-state="working"] .btn-glyph {
+    animation: spin 700ms linear infinite;
+  }
+  .btn[data-state="done"] {
+    color: var(--color-green);
+    border-color: var(--color-green);
+    background: var(--color-green-wash);
+  }
+  .btn[data-state="done"] .btn-glyph,
+  .btn[data-state="failed"] .btn-glyph {
+    stroke-dasharray: 24;
+    animation: draw 260ms var(--ease-soft) both;
+  }
+  .btn[data-state="failed"] {
+    color: var(--color-bad);
+    border-color: var(--color-bad);
+    background: var(--color-bad-wash);
+    animation: shake 320ms var(--ease-soft);
+  }
+  .btn-note {
+    font: 400 12px/1.4 var(--font-mono);
+    color: var(--color-bad);
+    animation: note-in 200ms var(--ease-soft);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn[data-state="working"] .btn-glyph {
+    animation: pulse 1.4s ease-in-out infinite !important;
+  }
+}

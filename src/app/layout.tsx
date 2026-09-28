@@ -1,31 +1,27 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { MotionProvider } from "@/components/site/motion-provider";
 import "./globals.css";
-import Motion from "./Motion";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
-  title: "notnotnotnoone — resilient AI infrastructure",
+  title: "flexrouter: run your AI apps on free tiers",
   description:
-    "flexrouter turns every free API tier into one endpoint that never runs dry. Infinite compute, completely free.",
+    "flexrouter pools the free tiers of several AI providers behind one local address. When one model hits its limit, the next best one answers.",
 };
 
-// Reveal everything if JS is disabled (GSAP normally does the revealing).
-const noscriptReveal = `html.motion .hero .eyebrow,html.motion .hero h1,html.motion .hero-sub,html.motion .hero .cta-row,html.motion .code-card,html.motion .qs header,html.motion .sec-head,html.motion .flag,html.motion .pnp,html.motion .engine-bar,html.motion .spoke,html.motion .panel,html.motion .agora-card,html.motion .proj,html.motion .step,html.motion .free,html.motion .closer,html.motion .claim{opacity:1!important;transform:none!important}`;
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="motion">
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <noscript>
-          <style dangerouslySetInnerHTML={{ __html: noscriptReveal }} />
+          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
         </noscript>
       </head>
       <body>
-        {children}
-        <Motion />
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
