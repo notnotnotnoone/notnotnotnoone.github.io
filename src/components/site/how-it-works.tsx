@@ -29,7 +29,7 @@ export const EXPLAINERS: { title: string; text: string }[] = [
   },
   {
     title: "Setup with AI",
-    text: "Pick a provider from the list, marked free or paid, and paste a key. Add models with AI finds the models the key can use, Get rate limits with AI fills in their limits, and Rank with AI puts them in order.",
+    text: "Pick a provider from the list, marked free or paid, and paste a key. Add models with AI finds the models the key can use, Find rate limits with AI fills in their limits, and Rank models with AI puts them in order.",
   },
 ];
 

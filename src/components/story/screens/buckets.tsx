@@ -51,7 +51,7 @@ export function BucketsScreen({ trigger }: ScreenProps) {
         <Button
           kind="test"
           icon={ListOrdered}
-          label="Rank with AI"
+          label="Rank models with AI"
           workingLabel="Ranking"
           doneLabel="Ranked"
           trigger={rank}

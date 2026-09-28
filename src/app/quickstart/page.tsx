@@ -6,14 +6,14 @@ import { Spotlight } from "@/components/site/spotlight";
 import { Box } from "@/components/ui/box";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Fold } from "@/components/ui/fold";
-import { GITHUB } from "@/lib/links";
+import { GETTING_STARTED, GITHUB } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "flexrouter quickstart",
   description: "Install flexrouter, open the dashboard, add a free provider and point your app at it.",
 };
 
-const INSTALL = "pip install git+https://github.com/notnotnotnoone/flexrouter";
+const INSTALL = "pip install flexrouter";
 
 const CURL = `curl http://localhost:4891/v1/chat/completions \\
   -H "Content-Type: application/json" \\
@@ -141,7 +141,11 @@ export default function Quickstart() {
               <CodeBlock label="python" code={CLIENT} />
             </Fold>
             <p className="text-ink-3">
-              The full guides are in the{" "}
+              Next, the{" "}
+              <a className="text-green underline-offset-4 hover:underline" href={GETTING_STARTED}>
+                Getting Started guide
+              </a>{" "}
+              walks through all of this in more detail. The other guides are in the{" "}
               <a className="text-green underline-offset-4 hover:underline" href={`${GITHUB}/tree/master/docs`}>
                 flexrouter repository
               </a>

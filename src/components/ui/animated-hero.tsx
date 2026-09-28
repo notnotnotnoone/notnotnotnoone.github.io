@@ -10,7 +10,7 @@ import { Button, ButtonLink } from "./button";
 import { useRotatingIndex } from "./use-rotating-index";
 
 export const HERO_WORDS = ["groq", "google", "mistral", "cerebras", "openrouter"];
-const INSTALL = "pip install git+https://github.com/notnotnotnoone/flexrouter";
+const INSTALL = "pip install flexrouter";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
